@@ -6,11 +6,11 @@ namespace eTickets.Data.Base
 {
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
         Task<T> GetById(int id);
 
-        Task Add(T entity);
+        Task AddAsync(T entity);
 
         Task UpdateAsync(int id, T entity);
 

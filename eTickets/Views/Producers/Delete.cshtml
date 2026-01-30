@@ -1,41 +1,47 @@
-﻿@model Actor
+﻿@model Producer
 
 @{
-    ViewData["Title"] = "Add a new actor";
+    ViewData["Title"] = "Delete producer";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
 
-        <h1 class="mb-4">Details of @Model.Fullname</h1>
+        <h1 class="mb-4">Delete @Model.Fullname ?</h1>
 
         <div class="form-group text-center">
 
-            <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
+            <img id="ProfilePicturePreview" />
 
         </div>
 
         <div class="form-group">
-            <label asp-for="profilePicURL"></label>
-            <input asp-for="profilePicURL" class="form-control" readonly />
-            <span asp-validation-for="profilePicURL" class="text-danger"></span>
+            <label asp-for="profilePicUrl"></label>
+            <input asp-for="profilePicUrl" class="form-control" readonly />
+            <span asp-validation-for="profilePicUrl" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Fullname"></label>
             <input asp-for="Fullname" class="form-control" readonly />
-            <span asp-validation-for="profilePicURL" class="text-danger"></span>
+            <span asp-validation-for="profilePicUrl" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Bio"></label>
             <input asp-for="Bio" class="form-control" readonly />
-            <span asp-validation-for="profilePicURL" class="text-danger"></span>
+            <span asp-validation-for="profilePicUrl" class="text-danger"></span>
         </div>
 
         <div class="form-group mt-3">
-            <a class="btn btn-outline-info float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-            <a asp-action="Index" class="btn btn-outline-secondary">Show All</a>
+            <form asp-action="Delete">
+
+                <input type="hidden" asp-for = "Id" />
+                <input type="submit" value="Confirm" class="btn btn-danger float-right" />
+
+
+            </form>
+            <a asp-action="Index" class="btn btn-outline-secondary">Back</a>
         </div>
 
 
