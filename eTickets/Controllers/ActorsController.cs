@@ -18,7 +18,7 @@ namespace eTickets.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAllActors();
+            var data = await _service.GetAll();
             return View(data);
         }
 
@@ -37,7 +37,7 @@ namespace eTickets.Controllers
                 return View(actor);
             }
 
-            _service.AddActor(actor);
+            await _service.Add(actor);
 
             return RedirectToAction(nameof(Index));
 
