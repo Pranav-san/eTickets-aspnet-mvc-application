@@ -1,13 +1,13 @@
-﻿@model Actor
+﻿@model Cinema
 
 @{
-    ViewData["Title"] = "Edit actor";
+    ViewData["Title"] = "Edit cinema";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
 
-        <h1 class="mb-4">Edit actor details</h1>
+        <h1 class="mb-4">Edit cinema details</h1>
 
         <form asp-action="Edit" method="post">
 
@@ -20,21 +20,21 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ProfilePicURL"></label>
-                <input asp-for="ProfilePicURL" class="form-control" />
-                <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
+                <label asp-for="Logo"></label>
+                <input asp-for="Logo" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="FullName"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Bio"></label>
-                <input asp-for="Bio" class="form-control" />
-                <span asp-validation-for="Bio" class="text-danger"></span>
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="form-group mt-3">

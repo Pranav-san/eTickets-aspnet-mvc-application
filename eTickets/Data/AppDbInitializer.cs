@@ -22,8 +22,8 @@ namespace eTickets.Data
                 {
                     context.Actors.AddRange(new List<Actor>()
                     {
-                        new Actor() { Fullname = "Actor 1", Bio = "Bio 1", profilePicURL = "http://example.com/actor1.jpg" },
-                        new Actor() { Fullname = "Actor 2", Bio = "Bio 2", profilePicURL = "http://example.com/actor2.jpg" },
+                        new Actor() { FullName = "Vijay", Bio = "Bio 1", ProfilePicURL = "https://res.cloudinary.com/dnrtr90w2/image/upload/v1769687794/Vijay_h2vgbb.jpg" },
+                        new Actor() { FullName = "Tom Hardy", Bio = "Bio 2", ProfilePicURL = "https://res.cloudinary.com/dnrtr90w2/image/upload/v1769850905/Tom_Hardy_r2jqok.jpg" },
                     });
                     context.SaveChanges();
                 }
@@ -32,8 +32,8 @@ namespace eTickets.Data
                 {
                     context.cinemas.AddRange(new List<Cinema>()
                     {
-                        new Cinema() { name = "Cinema 1", description = "Description 1", logo = "http://example.com/cinema1.jpg" },
-                        new Cinema() { name = "Cinema 2", description = "Description 2", logo = "http://example.com/cinema2.jpg" },
+                        new Cinema() { Name = "Cinema 1", Description = "Description 1", Logo = "http://example.com/cinema1.jpg" },
+                        new Cinema() { Name = "Cinema 2", Description = "Description 2", Logo = "http://example.com/cinema2.jpg" },
                     });
                     context.SaveChanges();
                 }
@@ -42,8 +42,8 @@ namespace eTickets.Data
                 {
                     context.producers.AddRange(new List<Producer>()
                     {
-                        new Producer() { Fullname = "Producer 1", Bio = "Bio 1", profilePicUrl = "http://example.com/producer1.jpg" },
-                        new Producer() { Fullname = "Producer 2", Bio = "Bio 2", profilePicUrl = "http://example.com/producer2.jpg" },
+                        new Producer() { FullName = "Producer 1", Bio = "Bio 1", ProfilePicURL = "http://example.com/producer1.jpg" },
+                        new Producer() { FullName = "Producer 2", Bio = "Bio 2", ProfilePicURL = "http://example.com/producer2.jpg" },
                     });
                     context.SaveChanges();
                 }
@@ -56,26 +56,26 @@ namespace eTickets.Data
                     {
                         new Movie()
                         {
-                            name="Movie 1",
-                            description="Description 1",
-                            price=10.0,
-                            ImageUrl ="http://example.com/movie1.jpg",
-                            startDate= DateTime.Now.AddDays(-10),
-                            endtDate= DateTime.Now.AddDays(-2),
-                            cinemaID = 1, producerID=1,
-                            movieCategory= MovieCategory.Action
+                            Name="28 Days Later",
+                            Description="Description 1",
+                            Price=10.0,
+                            ImageURL ="https://res.cloudinary.com/dnrtr90w2/image/upload/v1769850874/28_days_later.jpg_opos6s.jpg",
+                            StartDate= DateTime.Now.AddDays(-10),
+                            EndtDate= DateTime.Now.AddDays(-2),
+                            CinemaID = 1, ProducerID=1,
+                            MovieCategory= MovieCategory.Horror
                         },
 
                         new Movie()
                         {
-                            name="Movie 2",
-                            description="Description 1",
-                            price=10.0,
-                            ImageUrl ="http://example.com/movie1.jpg",
-                            startDate= DateTime.Now.AddDays(-10),
-                            endtDate= DateTime.Now.AddDays(-2),
-                            cinemaID = 1, producerID=1,
-                            movieCategory= MovieCategory.Thriller
+                            Name="Thoongaa Vanam",
+                            Description="Description 1",
+                            Price=10.0,
+                            ImageURL ="https://res.cloudinary.com/dnrtr90w2/image/upload/v1769850874/Thoonga_vanam_tiuuji.jpg",
+                            StartDate= DateTime.Now.AddDays(-10),
+                            EndtDate= DateTime.Now.AddDays(-2),
+                            CinemaID = 1, ProducerID=1,
+                            MovieCategory= MovieCategory.Thriller
                         },
 
                     });
@@ -90,13 +90,13 @@ namespace eTickets.Data
                     {
                         new Actor_Movie()
                         {
-                            actorID=1,
-                            movieID=1
+                            ActorID=1,
+                            MovieID=1
                         },
                         new Actor_Movie()
                         {
-                            actorID=2,
-                            movieID=2
+                            ActorID=2,
+                            MovieID=2
                         },
                     });
                     context.SaveChanges();

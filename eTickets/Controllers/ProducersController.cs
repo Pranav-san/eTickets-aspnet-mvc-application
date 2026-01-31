@@ -41,7 +41,7 @@ namespace eTickets.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Fullname, profilePicUrl, Bio")] Producer producer)
+        public async Task<IActionResult> Create([Bind("FullName, ProfilePicURL, Bio")] Producer producer)
         {
             if (!ModelState.IsValid)
             {
@@ -64,14 +64,14 @@ namespace eTickets.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("Id, Fullname, profilePicUrl, Bio")] int id, Producer producer)
+        public async Task<IActionResult> Edit([Bind("ID, FullName, ProfilePicURL, Bio")] int id, Producer producer)
         {
             if (!ModelState.IsValid)
             {
                 return View(producer);
             }
 
-            if (id == producer.Id)
+            if (id == producer.ID)
             {
                 await _service.UpdateAsync(id, producer);
                 return RedirectToAction(nameof(Index));

@@ -2,10 +2,10 @@
 {
     public class Actor_Movie
     {
-        public int movieID { get; set; }
-        public Movie movie { get; set; }
+        public int MovieID { get; set; }
+        public Movie Movie { get; set; }
 
-        public int actorID { get; set; }
-        public Actor actor { get; set; }
+        public int ActorID { get; set; }
+        public Actor Actor { get; set; }
     }
 }

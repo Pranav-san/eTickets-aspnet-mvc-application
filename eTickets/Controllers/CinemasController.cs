@@ -36,5 +36,60 @@ namespace eTickets.Controllers
             await _service.AddAsync(cinema);
             return RedirectToAction(nameof(Index));
         }
+
+        //Get: Cinemas/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var cinemaDetails = await _service.GetById(id);
+            if (cinemaDetails == null)
+                return View("NotFound");
+            else
+            {
+                return View(cinemaDetails);
+            }
+        }
+
+        //Get: Cinemas/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var cinemaDetails = await _service.GetById(id);
+            if (cinemaDetails == null)
+                return View("NotFound");
+            return View(cinemaDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("ID, Logo, Name, Description")] Models.Cinema cinema)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(cinema);
+            }
+            await _service.UpdateAsync(id, cinema);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Cinemas/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var cinemaDetails = await _service.GetById(id);
+            if (cinemaDetails == null)
+                return View("NotFound");
+            return View(cinemaDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int id, [Bind("ID, Logo, Name, Description")] Models.Cinema cinema)
+        {
+            var cinemaDetails = await _service.GetById(id);
+            if (cinemaDetails == null)
+                return View("NotFound");
+            else
+            {
+                await _service.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+
+        }
     }
 }

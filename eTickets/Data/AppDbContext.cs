@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Data
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -16,23 +16,29 @@ namespace eTickets.Data
 
             modelBuilder.Entity<Actor_Movie>().HasKey(am => new
             {
-                am.actorID,
-                am.movieID
+                am.ActorID,
+                am.MovieID
 
             });
 
-            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.movieID);
-            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.actorID);
+            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Movie).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.MovieID);
+            modelBuilder.Entity<Actor_Movie>().HasOne(m => m.Actor).WithMany(am => am.Actors_Movies).HasForeignKey(m => m.ActorID);
 
             base.OnModelCreating(modelBuilder);
         }
 
         //Table Names
-        public DbSet<Actor> Actors {  get; set; }
-        public DbSet<Movie> Movies {  get; set; }
-        public DbSet<Actor_Movie> Actors_Movie {  get; set; }
-        public DbSet<Cinema> cinemas {  get; set; }
-        public DbSet<Producer> producers {  get; set; }
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Actor_Movie> Actors_Movie { get; set; }
+        public DbSet<Cinema> cinemas { get; set; }
+        public DbSet<Producer> producers { get; set; }
+
+        //Orders
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
     }
 }

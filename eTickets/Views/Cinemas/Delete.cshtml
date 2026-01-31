@@ -1,13 +1,13 @@
-﻿@model Producer
+﻿@model Cinema
 
 @{
-    ViewData["Title"] = "Delete producer";
+    ViewData["Title"] = "Delete cinema";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
 
-        <h1 class="mb-4">Delete @Model.FullName ?</h1>
+        <h1 class="mb-4">Delete @Model.Name ?</h1>
 
         <div class="form-group text-center">
 
@@ -16,21 +16,21 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="ProfilePicURL"></label>
-            <input asp-for="ProfilePicURL" class="form-control" readonly />
-            <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
+            <label asp-for="Logo"></label>
+            <input asp-for="Logo" class="form-control" readonly />
+            <span asp-validation-for="Logo" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="FullName"></label>
-            <input asp-for="FullName" class="form-control" readonly />
-            <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
+            <label asp-for="Logo"></label>
+            <input asp-for="Logo" class="form-control" readonly />
+            <span asp-validation-for="Logo" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="Bio"></label>
-            <input asp-for="Bio" class="form-control" readonly />
-            <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" readonly />
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
         <div class="form-group mt-3">

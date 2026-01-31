@@ -7,15 +7,15 @@ namespace eTickets.Models
     public class Producer:IEntityBase
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Profile Picture")]
         [Required(ErrorMessage = "Profile Picture is required")]
-        public string profilePicUrl { get; set; }
+        public string ProfilePicURL { get; set; }
 
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Fullname is required")]
-        public string Fullname { get; set; }
+        public string FullName { get; set; }
 
         [Display(Name = "Biography")]
         [Required(ErrorMessage = "Bio is required")]
@@ -23,6 +23,6 @@ namespace eTickets.Models
 
 
         //RelationShips
-        public List<Movie> movies { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

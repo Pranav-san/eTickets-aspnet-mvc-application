@@ -7,21 +7,21 @@ namespace eTickets.Models
     public class Cinema: IEntityBase
     {
         [Key]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = " Cinema Logo")]
         [Required(ErrorMessage = "Cinema logo is required")]
-        public string logo { get; set; }
+        public string Logo { get; set; }
 
         [Display(Name = "Cinema Name")]
         [Required(ErrorMessage = "Cinema name is required")]
-        public string name {  get; set; }
+        public string Name {  get; set; }
 
         [Display(Name = " Cinema Description")]
         [Required(ErrorMessage = "Cinema description is required")]
-        public string description { get; set; }
+        public string Description { get; set; }
 
         //RelationShips
-        public List<Movie> movies { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

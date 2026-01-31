@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-8 offset-2">
 
-        <h1 class="mb-4">Delete @Model.Fullname ?</h1>
+        <h1 class="mb-4">Delete @Model.FullName ?</h1>
 
         <div class="form-group text-center">
 
@@ -16,27 +16,27 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="profilePicURL"></label>
-            <input asp-for="profilePicURL" class="form-control" readonly />
-            <span asp-validation-for="profilePicURL" class="text-danger"></span>
+            <label asp-for="ProfilePicURL"></label>
+            <input asp-for="ProfilePicURL" class="form-control" readonly />
+            <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="Fullname"></label>
-            <input asp-for="Fullname" class="form-control" readonly />
-            <span asp-validation-for="profilePicURL" class="text-danger"></span>
+            <label asp-for="FullName"></label>
+            <input asp-for="FullName" class="form-control" readonly />
+            <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="Bio"></label>
             <input asp-for="Bio" class="form-control" readonly />
-            <span asp-validation-for="profilePicURL" class="text-danger"></span>
+            <span asp-validation-for="ProfilePicURL" class="text-danger"></span>
         </div>
 
         <div class="form-group mt-3">
             <form asp-action="Delete">
 
-                <input type="hidden" asp-for = "Id" />
+                <input type="hidden" asp-for = "ID" />
                 <input type="submit" value="Confirm" class="btn btn-danger float-right" />
 
 

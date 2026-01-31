@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace eTickets.Data.Base
@@ -26,7 +28,7 @@ namespace eTickets.Data.Base
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
+            var entity = await _context.Set<T>().FirstOrDefaultAsync(n => n.ID == id);
             EntityEntry entityEntry = _context.Entry<T>(entity);
             entityEntry.State = EntityState.Deleted;
             await _context.SaveChangesAsync();
@@ -39,13 +41,20 @@ namespace eTickets.Data.Base
             return result;
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+            return await query.ToListAsync();
+        }
+
         public async Task<T> GetById(int id)
         {
-            var result = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
+            var result = await _context.Set<T>().FirstOrDefaultAsync(n => n.ID == id);
             return result;
         }
 
-        
+
 
         public async Task UpdateAsync(int id, T entity)
         {
