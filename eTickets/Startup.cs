@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using eTickets.Data.Services;
 using Microsoft.AspNetCore.Http;
 using eTickets.Data.Cart;
+using Microsoft.AspNetCore.Identity;
+using eTickets.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace eTickets
 {
@@ -41,7 +44,14 @@ namespace eTickets
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
+            //Authentication and Authorization
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
             services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
 
             //services.AddControllersWithViews();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -67,17 +77,21 @@ namespace eTickets
             app.UseRouting();
             app.UseSession();
 
+            //Authentication & Authorization
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Movies}/{action=Index}/{id?}");
             });
 
             //Seed database
             AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }

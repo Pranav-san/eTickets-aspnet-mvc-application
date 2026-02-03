@@ -1,6 +1,8 @@
 ﻿using eTickets.Data;
 using eTickets.Data.Services;
+using eTickets.Data.Static;
 using eTickets.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace eTickets.Controllers
 {
+    [Authorize(Roles=UserRoles.Admin)]
     public class MoviesController : Controller
     {
         private readonly IMovieService _service;
@@ -18,8 +21,7 @@ namespace eTickets.Controllers
             _service = service;
         }
 
-
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
 
@@ -27,6 +29,8 @@ namespace eTickets.Controllers
             return View(allMovies);
         }
 
+
+        [AllowAnonymous]
         public async Task<IActionResult> Filter(string SearchString)
         {
 
@@ -43,6 +47,9 @@ namespace eTickets.Controllers
 
             return View("Index", allMovies);
         }
+
+
+        [AllowAnonymous]
         //GET: Movies/Details/1
         public async Task<IActionResult> Details(int id)
         {
@@ -59,9 +66,9 @@ namespace eTickets.Controllers
         public async Task<IActionResult> Create()
         {
             var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
-            ViewBag.Cinemas = new SelectList(movieDropdownsData.cinemas, "Id", "name");
-            ViewBag.Producers = new SelectList(movieDropdownsData.producers, "Id", "Fullname");
-            ViewBag.Actors = new SelectList(movieDropdownsData.actors, "Id", "Fullname");
+            ViewBag.Cinemas = new SelectList(movieDropdownsData.cinemas, "ID", "Name");
+            ViewBag.Producers = new SelectList(movieDropdownsData.producers, "ID", "FullName");
+            ViewBag.Actors = new SelectList(movieDropdownsData.actors, "ID", "FullName");
 
             return View();
         }
@@ -71,9 +78,9 @@ namespace eTickets.Controllers
             if (!ModelState.IsValid)
             {
                 var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
-                ViewBag.Cinemas = new SelectList(movieDropdownsData.cinemas, "Id", "name");
-                ViewBag.Producers = new SelectList(movieDropdownsData.producers, "Id", "Fullname");
-                ViewBag.Actors = new SelectList(movieDropdownsData.actors, "Id", "Fullname");
+                ViewBag.Cinemas = new SelectList(movieDropdownsData.cinemas, "ID", "Name");
+                ViewBag.Producers = new SelectList(movieDropdownsData.producers, "ID", "FullName");
+                ViewBag.Actors = new SelectList(movieDropdownsData.actors, "ID", "FullName");
                 return View(movie);
             }
             await _service.AddNewMovieAsync(movie);

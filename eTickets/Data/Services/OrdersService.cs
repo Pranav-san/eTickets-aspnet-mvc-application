@@ -14,14 +14,20 @@ namespace eTickets.Data.Services
         {
             _context = context;
         }
-        public async Task<List<Order>> GetOrdersByUserIDAndRoleAsync(string userID)
+
+        public async Task<List<Order>> GetOrdersByUserIdAndRole(string userID, string userRole)
         {
-            var orders = await _context.Orders.Include(n => n.OrderItems)
-                .ThenInclude(n => n.Movie).Where(n => n.UserId == userID).ToListAsync();
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Include(n=> n.User).ToListAsync();
+
+            if(userRole != "Admin")
+            {
+                orders.Where(n=> n.UserId == userID).ToList();
+            }
 
             return orders;
-
         }
+
+       
 
         public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userID, string userEmailAddress)
         {
@@ -46,5 +52,7 @@ namespace eTickets.Data.Services
             }
             await _context.SaveChangesAsync();
         }
+
+       
     }
 }

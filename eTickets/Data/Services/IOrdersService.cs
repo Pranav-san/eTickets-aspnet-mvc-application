@@ -8,6 +8,7 @@ namespace eTickets.Data.Services
     {
         Task StoreOrderAsync(List<ShoppingCartItem> items, string userID, string userEmailAddress);
 
-        Task<List<Order>> GetOrdersByUserIDAndRoleAsync(string userID);
+        
+        Task<List<Order>> GetOrdersByUserIdAndRole(string userID, string userRole);
     }
 }

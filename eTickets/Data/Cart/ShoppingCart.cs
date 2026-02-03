@@ -89,6 +89,8 @@ namespace eTickets.Data.Cart
             var items = await _Context.ShoppingCartItems.Where(n => n.ShoppingCartID == ShoppingCartID).ToListAsync();
             _Context.ShoppingCartItems.RemoveRange(items);
             await _Context.SaveChangesAsync();
+
+            ShoppingCartItems = new List<ShoppingCartItem>();
         }
     }
 }

@@ -15,7 +15,7 @@
 
             <div class="form-group text-center">
 
-                <img id="ProfilePicturePreview" />
+                <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
 
             </div>
 
@@ -54,6 +54,13 @@
                 var output = document.getElementById("ProfilePicturePreview");
                 output.src = $(this).val();
             });
+
+         $("#ProfilePicURL").on("change" , function(){
+
+            var output = document.getElementById("ProfilePicturePreview");
+            output.src = $(this).val();
+
+        })
     </script>
 }
 
