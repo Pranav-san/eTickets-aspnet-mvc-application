@@ -90,8 +90,12 @@ namespace eTickets
             });
 
             //Seed database
-            AppDbInitializer.Seed(app);
-            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+            if (env.IsDevelopment())
+            {
+                AppDbInitializer.Seed(app);
+                AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+            }
+           
         }
     }
 }

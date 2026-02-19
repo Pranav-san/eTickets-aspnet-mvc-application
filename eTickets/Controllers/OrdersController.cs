@@ -22,7 +22,7 @@ namespace eTickets.Controllers
             _shoppingCart = shoppingCart;
             _ordersService = ordersService;
         }
-        public async Task< IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             string userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
             string userRole = User.FindFirstValue(ClaimTypes.Role);
@@ -48,13 +48,14 @@ namespace eTickets.Controllers
         {
             var item = await _moviesService.GetMovieByIdAsync(ID);
 
-            if(item != null)
+            if (item != null)
             {
                 _shoppingCart.AddItemToCart(item);
             }
             return RedirectToAction(nameof(ShoppingCart));
 
         }
+
         public async Task<IActionResult> RemoveItemShoppingCart(int ID)
         {
             var item = await _moviesService.GetMovieByIdAsync(ID);
@@ -66,6 +67,7 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(ShoppingCart));
 
         }
+
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
@@ -77,9 +79,6 @@ namespace eTickets.Controllers
             await _shoppingCart.ClearShoppingCartAsync();
 
             return View("OrderCompleted");
-
-
-
         }
 
 
